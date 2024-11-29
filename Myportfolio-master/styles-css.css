@@ -1,0 +1,61 @@
+/* Custom CSS for Portfolio */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Navbar Styling */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #333 !important;
+}
+
+/* Section Styling */
+section {
+    padding: 60px 0;
+}
+
+/* Card Styling */
+.card {
+    border-color: #e0e0e0;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Social Links */
+.social-links a {
+    color: #333;
+    margin-right: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Gallery */
+#gallery .card {
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #333 !important;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center;
+    }
+}
