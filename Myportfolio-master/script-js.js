@@ -16,35 +16,50 @@ document.addEventListener('DOMContentLoaded', function() {
     // Multimedia Gallery Dynamic Loading
     const galleryContainer = document.getElementById('multimedaGallery');
     const multimediaItems = [
-        { type: 'video', src: 'Coolstuffs/09.mp4', title: '' },
-        { type: 'video', src: 'Coolstuffs/11265.mp4', title: '' },
-        { type: 'video', src: 'Coolstuffs/0717.mp4', title: '' },
-        { type: 'video', src: 'Coolstuffs/09(1).mp4', title: '' },
-        { type: 'video', src: 'Coolstuffs/0512.mp4', title: '' },
-        { type: 'video', src: 'Coolstuffs/1114.mp4', title: '' },
-        { type: 'video', src: 'Coolstuffs/1118.mp4', title: 'Dumbledore Talking' },
-        // Add more multimedia items from your projects
+        // Ejemplo de video externo de Vimeo
+        { 
+            type: 'external-video', 
+            embedCode: `
+                <div class="video-container">
+                    <iframe 
+                        src="https://player.vimeo.com/video/1034641139?h=580b066318&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                        frameborder="0" 
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
+                        title="Project Video">
+                    </iframe>
+                </div>
+            `,
+            title: 'Video del Proyecto LISA'
+        },
+        // Puedes agregar más videos aquí
+        { 
+            type: 'external-video', 
+            embedCode: `
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        title="Ejemplo de Video">
+                    </iframe>
+                </div>
+            `,
+            title: 'Video de Ejemplo'
+        }
     ];
 
     multimediaItems.forEach(item => {
         const col = document.createElement('div');
-        col.className = 'col-md-4 mb-4';
+        col.className = 'col-md-6 mb-4'; // Cambiado a col-md-6 para mostrar 2 videos por fila
 
         const card = document.createElement('div');
         card.className = 'card h-100';
 
-        if (item.type === 'image') {
-            const img = document.createElement('img');
-            img.src = item.src;
-            img.alt = item.title;
-            img.className = 'card-img-top';
-            card.appendChild(img);
-        } else if (item.type === 'video') {
-            const video = document.createElement('video');
-            video.src = item.src;
-            video.className = 'card-img-top';
-            video.controls = true;
-            card.appendChild(video);
+        if (item.type === 'external-video') {
+            const videoWrapper = document.createElement('div');
+            videoWrapper.innerHTML = item.embedCode;
+            card.appendChild(videoWrapper);
         }
 
         const cardBody = document.createElement('div');
@@ -55,11 +70,4 @@ document.addEventListener('DOMContentLoaded', function() {
         col.appendChild(card);
         galleryContainer.appendChild(col);
     });
-});
-
-// Optional: Simple Form Validation
-document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Add form submission logic here
-    alert('Formulario enviado. ¡Gracias por tu mensaje!');
 });
